@@ -6,12 +6,16 @@ cache:
   directories:
     - "$HOME/.gradle/caches/"
     - "$HOME/.gradle/wrapper/"
-#before_deploy:
+before_deploy:
+   - ls build
+   - ls build/libs || echo ''
+   - ls build/distributions || echo ''
 #  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
     secure: AFJl3XxOt+cRoNt+7n1XwVaUH5TEyr1ljO2d6xVI2YFRNzTZqBud2JYLqW1Br2Yqh7I1enn7J1b2R5quk90gh1BtpHnWG+e8xw/j5wDZohTmsb04eIcH9ynOKuAnyRdp20FSmW0aGvTBnbn5KXgWvH9ElXgm633wAo2oupinK7W6cCknMztlF73nQ/Yr2MlN8M6GPmVxK7Nou5ydPsxR6h+wa8DpN2WMWz7yOfd+6981poro24+cDjvkhL7O57+Qc6S2TsUNIXfb2tJJ2kJnSlb8/6qISXc7WgB/ed1MeOvny1RI1JT6svYLfhaDU9NvjA37gyjFAvjbi3+AYX793cCSwQvQkRV+IG8V+GfU7ictvfB7naBjZsAqw5a7C6D01NYU+VTIcTi9fyHR6kljIIHzyP4C5LAAoD2+EGCk94Du6ELWx8i78URosf/GaUUsXkr1lkFU2zflSelKoa5TOUZt13X5uM2S0UA5l26wCYcbWvmXuwkovws3ysWZH9HDuFP4xoNGeDxbnC0ZszcVLn4tHyfGyceFc/RyHWVGkj8N9Oz8K2DyBYg5Rst1jC4f+SC1ffy+FPTey5bs6/TXgoYx6YSMRe6Z94NhFAq+So09ft/my4uxNmi3ZsLgXyJLS2HZoBus02NMWCd/h6vr3oXABcz2zPwPqlLFYxRxzzA=
+  file_glob: true
   file:
     - build/libs/*
     - build/distributions/*
